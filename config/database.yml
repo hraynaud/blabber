@@ -3,3 +3,9 @@ development:
   encoding: unicode
   database: blabber_development
   pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: blabber_test
+  pool: 5
