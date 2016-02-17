@@ -10,5 +10,9 @@ module.exports = {
       { test: /\.jsx$/, loader: 'jsx-loader' }
     ]
   },
+
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: []
 };
