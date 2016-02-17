@@ -9,7 +9,7 @@
 5 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:51:40
 5 verbose stack     at final (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:349:17)
 5 verbose stack     at then (/usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:126:33)
-5 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:331:40
+5 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-package-json/read-json.js:266:40
 5 verbose stack     at evalmachine.<anonymous>:272:14
 5 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/graceful-fs/graceful-fs.js:102:5
 5 verbose stack     at Object.oncomplete (evalmachine.<anonymous>:108:15)

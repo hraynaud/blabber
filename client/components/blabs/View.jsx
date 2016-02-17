@@ -14,10 +14,24 @@ module.exports = React.createClass({
       this.setState({data: blabs});
     }.bind(this));
   },
+  optimisticUpdate: function(blab) {
+    var blabs = this.state.data;
+    blabs.unshift(blab);
+    this.setState({data: blabs});
+  },
+  writeBlabToAPI: function(data) {
+    this.props.writeToAPI('post', this.props.origin + '/blabs', data, function(blab) {
+      var blabs = this.state.data;
+      blabs.shift();
+      blabs.unshift(blab);
+      this.setState({data: blabs});
+    }.bind(this));
+  },
   render: function() {
     return (
       <div className="blabs-view">
-        <BlabsList data={this.state.data} />
+      <BlabsForm writeBlabToAPI={this.writeBlabToAPI} optimisticUpdate={this.optimisticUpdate} currentUser={this.props.currentUser} signedIn={this.props.signedIn} />
+      <BlabsList data={this.state.data} />
       </div>
     );
   }
