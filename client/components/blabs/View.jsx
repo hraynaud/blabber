@@ -1,6 +1,6 @@
 var React = require('react');
 var BlabsList = require('./List.jsx');
-
+var BlabsForm = require('./Form.jsx');
 module.exports = React.createClass({
   getInitialState: function() {
     return {data: []};
