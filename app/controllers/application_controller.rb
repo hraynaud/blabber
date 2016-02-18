@@ -1,17 +1,18 @@
 class ApplicationController < ActionController::API
  before_action :allow_cross_origin_requests, if: proc { Rails.env.development? }
+ before_action :authenticate_request, only: [:current_user]
 
-  def preflight
-    render nothing: true
-  end
+ def preflight
+   render nothing: true
+ end
 
-  def current_user
-    render json: @current_user, only: [:handle]
-  end
+ def current_user
+   render json: @current_user, only: [:handle]
+ end
 
-  def index
-    render file: 'public/index.html'
-  end
+ def index
+   render file: 'public/index.html'
+ end
 
 private
   def allow_cross_origin_requests
@@ -22,7 +23,7 @@ private
     headers['Access-Control-Max-Age'] = '1728000'
   end 
 
-    def authenticate_request
+  def authenticate_request
     begin
       uid = JWT.decode(request.headers['Authorization'], Rails.application.secrets.secret_key_base)[0]['uid']
       @current_user = User.find_by(uid: uid)
