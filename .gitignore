@@ -56,7 +56,7 @@ bower.json
 /public/bundle.js.map
 /public/bundle.js
 
-
+*.log
 
 # Ignore pow environment settings
 .powenv
