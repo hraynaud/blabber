@@ -8,3 +8,7 @@ gem 'puma'
 gem 'pg'
 gem 'jwt'
 gem 'oauth'
+
+group :production do
+  gem 'rails_12factor'
+end
