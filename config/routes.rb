@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'request_token', to: 'tokens#request_token'
   get 'access_token', to: 'tokens#access_token'
 
+  post 'login', to: 'application#login'
+
   resources :blabs, only: [:index, :create, :show]
 
   match '*all', to: 'application#index', via: [:get]

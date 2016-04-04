@@ -12,7 +12,7 @@ module.exports = React.createClass({
     if (this.props.signedIn) {
       var signingLink = <li><span onClick={this.handleSignOutLink}>Sign Out</span></li>;
     } else {
-      var signingLink = <li><a href={this.props.origin + '/request_token'}>Sign In</a></li>;
+      var signingLink = <li><a href={this.props.origin + '/request_token'}>Twitter Login</a></li>;
     }
     return (
       <div id="menu">
@@ -23,6 +23,7 @@ module.exports = React.createClass({
             <ul>
               <li><Link to="blabs">Blabs</Link></li>
               <li><Link to="about">About</Link></li>
+              <li><Link to="login">Login</Link></li>
               {signingLink}
             </ul>
           </div>

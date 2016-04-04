@@ -10,6 +10,10 @@ class ApplicationController < ActionController::API
    render json: @current_user, only: [:handle]
  end
 
+ def login
+   head :ok
+ end 
+
  def index
    render file: 'public/index.html'
  end
