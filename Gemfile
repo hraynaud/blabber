@@ -12,3 +12,9 @@ gem 'oauth'
 group :production do
   gem 'rails_12factor'
 end
+
+
+group :development, :test do
+  gem 'pry'
+  gem 'pry-byebug'
+end
