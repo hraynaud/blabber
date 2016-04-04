@@ -9,10 +9,7 @@ class TokensController < ApplicationController
   def access_token
     oauth = Oauth.find_by(token: params[:oauth_token])
     if oauth.present?
-      request_token = OAuth::RequestToken.new(TWITTER, oauth.token, oauth.secret)
-      access_token = request_token.get_access_token(oauth_verifier: params[:oauth_verifier])
-      user = User.find_or_create_by(uid: access_token.params[:user_id]) { |u| u.handle = access_token.params[:screen_name] }
-      jwt = JWT.encode({uid: user.uid, exp: 1.day.from_now.to_i}, Rails.application.secrets.secret_key_base)
+      jwt = Authentication.login_by_oauth_token oauth, params
       redirect_to ENV['ORIGIN'] + "?jwt=#{jwt}"
     else
       redirect_to ENV['ORIGIN']
