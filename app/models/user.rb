@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
   has_many :blabs
-  validates_presence_of :uid, :handle
   has_secure_password
-  validates :password, :length => { :minimum => 5 }, allow_nil: true, unless: :is_oauth?, on: :create
+
+  validates :uid, :handle, presence: true, on: :create, unless: :using_pwd?
+  validates :email, unique: true
+  validates :email, presence: true, unless: :is_oauth?
+  validates :password, :length => { :minimum => 5 }, allow_nil: true,  on: :create, unless: :is_oauth?
 
   private
 
@@ -10,4 +13,7 @@ class User < ActiveRecord::Base
     user.handle.present?
   end
 
+  def using_pwd?
+    user.password.present? && user.email.present?
+  end
 end
