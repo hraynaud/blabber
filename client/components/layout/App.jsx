@@ -15,21 +15,35 @@ module.exports = React.createClass({
   },
   componentWillMount: function() {
     var jwt = new Uri(location.search).getQueryParamValue('jwt');
-    if (!!jwt) {sessionStorage.setItem('jwt', jwt);}
+    this.setToken(jwt);
   },
+
   componentDidMount: function() {
     if (!!sessionStorage.getItem('jwt')) {this.currentUserFromAPI();}
   },
+
   currentUserFromAPI: function() {
     this.readFromAPI(this.props.origin + '/current_user', function(user) {
-      this.setState({signedIn: true, currentUser: user});
+      this.signIn(user);
     }.bind(this));
+
+  },
+
+  setToken: function(jwt){
+    if (!!jwt) {
+      sessionStorage.setItem('jwt', jwt);
+    }
+  },
+
+  signIn: function(user){
+    this.setState({signedIn: true, currentUser: user});
   },
 
   handleMenuClick: function() {
     this.setState({showMenu: !this.state.showMenu});
   },
 
+  
   readFromAPI: function(url, successFunction) {
     Reqwest({
       url: url,
@@ -68,7 +82,7 @@ module.exports = React.createClass({
       <div id="app" className={menu}>
       <Menu origin={this.props.origin} sendMenuClick={this.handleMenuClick} signedIn={this.state.signedIn} />
       <div id="content">
-      <RouteHandler origin={this.props.origin} readFromAPI={this.readFromAPI} writeToAPI={this.writeToAPI} currentUser={this.state.currentUser} signedIn={this.state.signedIn} />
+      <RouteHandler origin={this.props.origin} readFromAPI={this.readFromAPI} writeToAPI={this.writeToAPI} currentUser={this.state.currentUser} signedIn={this.state.signedIn} signIn={this.state.signIn}/>
       </div>
       </div>
     );

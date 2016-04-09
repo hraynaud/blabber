@@ -15,7 +15,8 @@ var LoginForm = React.createClass({
 
     this.props.writeToAPI('post', this.props.origin + '/login', credentials, function(response) {
       if (!!response.jwt) {
-        sessionStorage.setItem('jwt', response.jwt);
+        this.props.setToken(response.jwt)
+        location = '/';
       }
     });
   },
