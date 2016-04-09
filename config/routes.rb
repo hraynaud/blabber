@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   match '*all', to: 'application#preflight', via: [:options]
 
   get 'current_user', to: 'application#current_user'
-  get 'request_token', to: 'tokens#request_token'
-  get 'access_token', to: 'tokens#access_token'
+  get 'request_token', to: 'authentication#request_token'
+  get 'access_token', to: 'authenticaton#access_token'
 
-  post 'login', to: 'application#login'
+  post 'login', to: 'authentication#login'
 
   resources :blabs, only: [:index, :create, :show]
 
