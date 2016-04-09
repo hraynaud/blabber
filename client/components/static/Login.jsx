@@ -12,7 +12,11 @@ var LoginForm = React.createClass({
     var email = this.refs.email.getDOMNode().value;
     var password = this.refs.password.getDOMNode().value;
     var credentials = JSON.stringify({email:email, password:password});
+
     this.props.writeToAPI('post', this.props.origin + '/login', credentials, function(response) {
+      if (!!response.jwt) {
+        sessionStorage.setItem('jwt', response.jwt);
+      }
     });
   },
 
