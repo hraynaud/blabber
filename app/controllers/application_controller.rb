@@ -10,13 +10,26 @@ class ApplicationController < ActionController::API
    render json: @current_user, only: [:handle]
  end
 
- def login
-   head :ok
- end 
+ 
 
  def index
    render file: 'public/index.html'
  end
+
+protected
+
+def pwd_login_success jwt
+  if jwt
+    render json: {jwt: jwt}, status: 200
+  else
+    render json: 'authentication failed', status: 401
+  end
+end
+
+
+def pwd_login_fail error="Authentication failed"
+  render json: error, status: 401
+end
 
 private
   def allow_cross_origin_requests
