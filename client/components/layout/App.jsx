@@ -23,9 +23,9 @@ module.exports = React.createClass({
   },
 
   currentUserFromAPI: function() {
-    this.readFromAPI(this.props.origin + '/current_user', function(user) {
-      this.signIn(user);
-    }.bind(this));
+    this.readFromAPI( this.props.origin + '/current_user', function(user) {
+        this.signIn(user);
+      }.bind(this));
 
   },
 
@@ -77,12 +77,11 @@ module.exports = React.createClass({
 
   render: function () {
     var menu = this.state.showMenu ? 'show-menu' : 'hide-menu';
-
     return (
       <div id="app" className={menu}>
       <Menu origin={this.props.origin} sendMenuClick={this.handleMenuClick} signedIn={this.state.signedIn} />
       <div id="content">
-      <RouteHandler origin={this.props.origin} readFromAPI={this.readFromAPI} writeToAPI={this.writeToAPI} currentUser={this.state.currentUser} signedIn={this.state.signedIn} signIn={this.state.signIn}/>
+      <RouteHandler origin={this.props.origin} readFromAPI={this.readFromAPI} writeToAPI={this.writeToAPI} currentUser={this.state.currentUser} signedIn={this.state.signedIn} setToken={this.setToken}/>
       </div>
       </div>
     );

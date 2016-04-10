@@ -7,7 +7,6 @@ var LoginForm = React.createClass({
   },
  
   handleSubmit: function(e) {
-    console.log("submit");
     e.preventDefault();
     var email = this.refs.email.getDOMNode().value;
     var password = this.refs.password.getDOMNode().value;
@@ -18,7 +17,7 @@ var LoginForm = React.createClass({
         this.props.setToken(response.jwt)
         location = '/';
       }
-    });
+    }.bind(this));
   },
 
   render: function() {
@@ -37,7 +36,13 @@ var LoginForm = React.createClass({
         </div>
         <button type="submit" className="card--login__submit">Login</button>
         </form>
+
+        <p>
+        <a href={this.props.origin + '/request_token'}>Twitter Login</a>
+        </p>
       </div>
+
+
     );
   }
 });
