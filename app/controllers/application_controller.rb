@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
  before_action :authenticate_request, only: [:current_user]
 
  def preflight
-   render nothing: true
+   head :ok
  end
 
  def current_user
