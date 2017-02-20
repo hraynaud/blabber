@@ -1,16 +1,13 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute;
+import React from 'react';
+import { Route, IndexRoute } from 'react-router'
+
+import App from '../components/layout/App.jsx';
+import BlabsViewContainer from '../components/blabs/ViewContainer.jsx';
+import AboutView from '../components/static/AboutView.jsx';
+import LoginForm from '../components/static/Login.jsx';
 
 
-var App = require('../components/layout/App.jsx');
-var BlabsViewContainer = require('../components/blabs/ViewContainer.jsx');
-var AboutView = require('../components/static/AboutView.jsx');
-var LoginForm = require('../components/static/Login.jsx');
-
-module.exports = (
+export default (
   <Route path="/" component={App}>
     <IndexRoute component={BlabsViewContainer} />
     <Route path="about" component={AboutView} />

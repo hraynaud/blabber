@@ -1,12 +1,9 @@
-var React = require('react');
-var Reqwest = require('reqwest');
-var BlabsView = require('../blabs/View.jsx');
-var Menu = require('./Menu.jsx');
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
-var Uri = require('jsuri');
+import React, {Component} from 'react';
+import Uri from 'jsuri';
+import Reqwest from 'reqwest';
+import Menu from './Menu.jsx'
 
-module.exports = React.createClass({
+var App =  React.createClass({
   getDefaultProps: function() {
     return {origin: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : ''};
   },
@@ -100,3 +97,5 @@ module.exports = React.createClass({
     );
   }
 });
+
+export default App;
