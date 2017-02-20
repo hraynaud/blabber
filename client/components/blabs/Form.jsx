@@ -3,13 +3,13 @@ var React = require('react');
 module.exports = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
-    var content = this.refs.content.getDOMNode().value.trim();
+    var content = this.refs.content.value.trim();
     if (!content) {return;}
     if (this.props.signedIn) {
       this.props.optimisticUpdate({id: 'fake-id', content: content, user: this.props.currentUser});
       this.props.writeBlabToAPI(JSON.stringify({blab: {content: content}}));
-      this.refs.content.getDOMNode().value = '';
-      this.refs.content.getDOMNode().blur();
+      this.refs.content.value = '';
+      this.refs.content.blur();
     } else {
       alert('Please sign in to blab!');
     }
