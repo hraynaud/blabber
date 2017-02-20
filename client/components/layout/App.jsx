@@ -81,9 +81,20 @@ module.exports = React.createClass({
       <div id="app" className={menu}>
       <Menu origin={this.props.origin} sendMenuClick={this.handleMenuClick} signedIn={this.state.signedIn} />
       <div id="content">
-        {/*<RouteHandler origin={this.props.origin} readFromAPI={this.readFromAPI} writeToAPI={this.writeToAPI} currentUser={this.state.currentUser} signedIn={this.state.signedIn} setToken={this.setToken}/>*/}
 
-      {this.props.children}
+        {
+          this.props.children && React.cloneElement(
+            this.props.children, 
+            {
+              origin:this.props.origin,
+              readFromAPI:this.readFromAPI,
+              writeToAPI:this.writeToAPI,
+              currentUser: this.state.currentUser,
+              signedIn:this.state.signedIn,
+              setToken:this.setToken
+            }
+          )
+        }
       </div>
       </div>
     );
