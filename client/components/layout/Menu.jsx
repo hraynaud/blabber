@@ -1,9 +1,7 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
-var IndexLink = ReactRouter.IndexLink;
+import React from 'react';
+import {Link, IndexLink} from 'react-router';
 
-module.exports = React.createClass({
+export default React.createClass({
   handleSignOutLink: function() {
     sessionStorage.setItem('jwt','');
     location = '/';

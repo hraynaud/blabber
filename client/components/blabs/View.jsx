@@ -1,7 +1,8 @@
-var React = require('react');
-var BlabsList = require('./List.jsx');
-var BlabsForm = require('./Form.jsx');
-module.exports = React.createClass({
+import React from 'react';
+import BlabsList from './List.jsx';
+import BlabsForm from './Form.jsx';
+
+export default React.createClass({
   render: function() {
     return (
       <div className="blabs-view">

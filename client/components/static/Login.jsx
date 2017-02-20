@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-var LoginForm = React.createClass({
+export default React.createClass({
 
   getInitialState: function() {
     return { errors: [] };
@@ -46,5 +46,3 @@ var LoginForm = React.createClass({
     );
   }
 });
-
-module.exports = LoginForm;

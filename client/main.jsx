@@ -2,13 +2,11 @@ require('./assets/app.css');
 require('./assets/menu.css');
 require('./assets/blabs.css');
 
-var React = require('react');
-var ReactDom = require('react-dom');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var history = ReactRouter.browserHistory;
-var routes = require('./config/routes.jsx').default;
+import React from 'react';
+import {render} from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+import routes from './config/routes.jsx';
 
-ReactDom.render(<Router history={history}>{routes}</Router>,  document.getElementById("root"));
+render(<Router history={browserHistory}>{routes}</Router>,  document.getElementById("root"));
 
 

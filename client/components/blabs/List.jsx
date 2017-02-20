@@ -1,7 +1,7 @@
-var React = require('react');
-var Blab = require('./Blab.jsx');
+import React from 'react';
+import Blab from './Blab.jsx';
 
-module.exports = React.createClass({
+export default React.createClass({
   render: function() {
     var blabs = this.props.data.map(function(blab) {
       return (
@@ -15,4 +15,4 @@ module.exports = React.createClass({
       </ul>
     );
   }
-})
+});

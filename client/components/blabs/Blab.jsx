@@ -1,6 +1,7 @@
-var React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+
+export default React.createClass({
   render: function() {
     return (
       <li className="blab">

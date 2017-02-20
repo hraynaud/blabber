@@ -1,7 +1,7 @@
-var React = require('react');
-var View = require('./View.jsx');
+import React from 'react';
+import View from'./View.jsx';
 
-module.exports = React.createClass({
+export default React.createClass({
   getInitialState: function() {
     return {data: []};
   },
