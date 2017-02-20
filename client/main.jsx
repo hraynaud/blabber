@@ -3,11 +3,12 @@ require('./assets/menu.css');
 require('./assets/blabs.css');
 
 var React = require('react');
-var Router = require('react-router');
+var ReactDom = require('react-dom');
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var createHistory = require('history').createHistory;
 var routes = require('./config/routes.jsx');
 
-Router.run(routes, Router.HistoryLocation, function(Handler) {
-  React.render(<Handler/>, document.body);
-});
+ReactDom.render(<Router history={createHistory()}>{routes}</Router>,  document.getElementById("root"));
 
 

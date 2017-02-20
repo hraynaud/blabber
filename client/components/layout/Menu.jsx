@@ -1,6 +1,7 @@
 var React = require('react');
-var Router = require('react-router');
-var Link = Router.Link;
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
+var IndexLink = ReactRouter.IndexLink;
 
 module.exports = React.createClass({
   handleSignOutLink: function() {
@@ -21,7 +22,7 @@ module.exports = React.createClass({
           <div className="pure-menu pure-menu-open">
             <span className="pure-menu-heading">Blabber</span>
             <ul>
-              <li><Link to="blabs">Blabs</Link></li>
+              <li><IndexLink to="/">Blabs</IndexLink></li>
               <li><Link to="about">About</Link></li>
               {signingLink}
             </ul>
