@@ -4,12 +4,15 @@ import Reqwest from 'reqwest';
 import Menu from './Menu.jsx'
 
 var App =  React.createClass({
+
   getDefaultProps: function() {
     return {origin: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : ''};
   },
+
   getInitialState: function() {
     return {showMenu: false, signedIn: false, currentUser: {handle: ''}};
   },
+
   componentWillMount: function() {
     var jwt = new Uri(location.search).getQueryParamValue('jwt');
     this.setToken(jwt);
@@ -19,28 +22,6 @@ var App =  React.createClass({
     if (!!sessionStorage.getItem('jwt')) {this.currentUserFromAPI();}
   },
 
-  currentUserFromAPI: function() {
-    this.readFromAPI( this.props.origin + '/current_user', function(user) {
-        this.signIn(user);
-      }.bind(this));
-
-  },
-
-  setToken: function(jwt){
-    if (!!jwt) {
-      sessionStorage.setItem('jwt', jwt);
-    }
-  },
-
-  signIn: function(user){
-    this.setState({signedIn: true, currentUser: user});
-  },
-
-  handleMenuClick: function() {
-    this.setState({showMenu: !this.state.showMenu});
-  },
-
-  
   readFromAPI: function(url, successFunction) {
     Reqwest({
       url: url,
@@ -72,6 +53,27 @@ var App =  React.createClass({
     });
   },
 
+  currentUserFromAPI: function() {
+    this.readFromAPI( this.props.origin + '/current_user', function(user) {
+        this.signIn(user);
+      }.bind(this));
+
+  },
+
+  setToken: function(jwt){
+    if (!!jwt) {
+      sessionStorage.setItem('jwt', jwt);
+    }
+  },
+
+  signIn: function(user){
+    this.setState({signedIn: true, currentUser: user});
+  },
+
+  handleMenuClick: function() {
+    this.setState({showMenu: !this.state.showMenu});
+  },
+
   render: function () {
     var menu = this.state.showMenu ? 'show-menu' : 'hide-menu';
     return (
@@ -81,14 +83,14 @@ var App =  React.createClass({
 
         {
           this.props.children && React.cloneElement(
-            this.props.children, 
+            this.props.children,
             {
-              origin:this.props.origin,
-              readFromAPI:this.readFromAPI,
-              writeToAPI:this.writeToAPI,
+              readFromAPI: this.readFromAPI,
+              writeToAPI: this.writeToAPI,
+              setToken: this.setToken,
+              origin: this.props.origin,
               currentUser: this.state.currentUser,
-              signedIn:this.state.signedIn,
-              setToken:this.setToken
+              signedIn: this.state.signedIn,
             }
           )
         }
