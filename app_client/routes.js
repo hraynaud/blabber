@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router'
 
-import App from './components/layout/App.jsx';
+import App from './components/App.jsx';
+import LoginForm from './components/Login.jsx';
 import BlabsViewContainer from './components/blabs/ViewContainer.jsx';
-import AboutView from './components/static/AboutView.jsx';
-import LoginForm from './components/static/Login.jsx';
+import AboutView from './components/AboutView.jsx';
 
 
 export default (
