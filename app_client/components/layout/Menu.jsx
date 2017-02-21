@@ -18,9 +18,9 @@ export default React.createClass({
         <span id="menu-link" onClick={this.props.sendMenuClick}><span></span></span>
         <div id="menu-list">
           <div className="pure-menu pure-menu-open">
-            <span className="pure-menu-heading">Blabber</span>
+            <span className="pure-menu-heading">Qonbit</span>
             <ul>
-              <li><IndexLink to="/">Blabs</IndexLink></li>
+              <li><IndexLink to="/">Projects</IndexLink></li>
               <li><Link to="about">About</Link></li>
               {signingLink}
             </ul>

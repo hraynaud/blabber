@@ -23,7 +23,7 @@ export default React.createClass({
   render: function() {
     return (
       <div>
-        {this.props.origin}
+        {/*this.props.origini*/}
  
         <form onSubmit={this.handleSubmit}>
         <div className="card--login__field">
