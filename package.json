@@ -1,8 +1,8 @@
 {
   "name": "Qonbit",
   "version": "0.0.1",
-  "main": "client/main.jsx",
   "description": "Superior Social",
+  "main": "app_client/main.jsx",
   "repository": {
     "type": "git",
     "url": ""
