@@ -1,8 +1,8 @@
 {
-  "name": "Blabber",
+  "name": "Qonbit",
   "version": "0.0.1",
-  "description": "an app for blabbing",
   "main": "client/main.jsx",
+  "description": "Superior Social",
   "repository": {
     "type": "git",
     "url": ""
