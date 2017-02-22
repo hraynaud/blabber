@@ -13,8 +13,8 @@ class ApplicationController < ActionController::API
    render file: 'public/index.html'
  end
 
-protected
 
+private
 def pwd_login_success jwt
   if jwt
     render json: {jwt: jwt}, status: 200
@@ -28,7 +28,6 @@ def pwd_login_fail error="Authentication failed"
   render json: error, status: 401
 end
 
-private
   def authenticate_request
     begin
       uid = JWT.decode(request.headers['Authorization'], Rails.application.secrets.secret_key_base)[0]['uid']
