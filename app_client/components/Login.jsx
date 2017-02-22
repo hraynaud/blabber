@@ -23,8 +23,9 @@ export default React.createClass({
   render: function() {
     return (
       <div>
-        {/*this.props.origini*/}
- 
+       <p>
+         Login to your account with your email and password or through Twitter
+       </p>
         <form onSubmit={this.handleSubmit}>
         <div className="card--login__field">
         <label name="email">Email</label>

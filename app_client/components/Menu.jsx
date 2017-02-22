@@ -8,10 +8,17 @@ export default React.createClass({
   },
 
   render: function() {
+    var signingLink
+      , projectsLink = ""
+      , homeLink = ""
+    ;
+
     if (this.props.signedIn) {
-      var signingLink = <li><span onClick={this.handleSignOutLink}>Sign Out</span></li>;
+      signingLink = <li><span onClick={this.handleSignOutLink}>Sign Out</span></li>;
+      projectsLink=  <li><Link  to="/projects">Projects</Link></li>;
     } else {
-      var signingLink = <li><Link to="login">Login</Link></li>
+      signingLink = <li><Link to="login">Login</Link></li>;
+      homeLink = <li><Link to="/">Home</Link></li>;
     }
     return (
       <div id="menu">
@@ -20,9 +27,10 @@ export default React.createClass({
           <div className="pure-menu pure-menu-open">
             <span className="pure-menu-heading">Qonbit</span>
             <ul>
-              <li><IndexLink to="/">Projects</IndexLink></li>
-              <li><Link to="about">About</Link></li>
-              {signingLink}
+            {homeLink}
+            <li><Link to="about">About</Link></li>
+            {projectsLink}
+            {signingLink}
             </ul>
           </div>
         </div>
