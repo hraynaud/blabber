@@ -38,7 +38,6 @@ var App =  React.createClass({
       success: successFunction,
       error: function(error) {
         console.error(url, error['response']);
-        location = '/';
       }
     });
   },
@@ -54,7 +53,6 @@ var App =  React.createClass({
       success: successFunction,
       error: function(error) {
         console.error(url, error['response']);
-        location = '/';
       }
     });
   },
