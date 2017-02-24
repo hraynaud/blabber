@@ -23,7 +23,7 @@ class Authentication
 
   def self.jwt_for user
     id = user.uid || user.id
-    JWT.encode({uid: user.uid, exp: 1.day.from_now.to_i}, Rails.application.secrets.secret_key_base)
+    JWT.encode({uid: user.uid, handle: user.handle, exp: 1.day.from_now.to_i}, Rails.application.secrets.secret_key_base)
   end
   
 
