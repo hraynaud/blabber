@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Uri from 'jsuri';
+import JWTDecode from 'jwt-decode';
 import Reqwest from 'reqwest';
 import Menu from './Menu.jsx'
 
@@ -14,12 +15,17 @@ var App =  React.createClass({
   },
 
   componentWillMount: function() {
-    var jwt = new Uri(location.search).getQueryParamValue('jwt');
-    this.setToken(jwt);
-  },
+    var jwt = new Uri(location.search).getQueryParamValue('jwt')
+      , user = sessionStorage.getItem('jwt')
+    ;
 
-  componentDidMount: function() {
-    if (!!sessionStorage.getItem('jwt')) {this.currentUserFromAPI();}
+    if(jwt){
+      user = JWTDecode(jwt);
+      this.setToken(jwt);
+      this.signIn(user);
+    }else if(user){
+      this.signIn(user);
+    }
   },
 
   readFromAPI: function(url, successFunction) {
@@ -53,13 +59,6 @@ var App =  React.createClass({
     });
   },
 
-  currentUserFromAPI: function() {
-    this.readFromAPI( this.props.origin + '/current_user', function(user) {
-        this.signIn(user);
-      }.bind(this));
-
-  },
-
   setToken: function(jwt){
     if (!!jwt) {
       sessionStorage.setItem('jwt', jwt);
@@ -80,7 +79,7 @@ var App =  React.createClass({
       <div id="app" className={menu}>
       <Menu origin={this.props.origin} sendMenuClick={this.handleMenuClick} signedIn={this.state.signedIn} />
       <div id="content">
-
+        <h5>{this.state.signedIn ? this.state.currentUser.handle : "Please sign in"}</h5>
         {
           this.props.children && React.cloneElement(
             this.props.children,
