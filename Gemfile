@@ -20,6 +20,7 @@ end
 
 
 group :development, :test do
+  gem 'listen'
   gem 'pry'
   gem 'pry-byebug'
 end
