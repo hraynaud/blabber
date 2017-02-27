@@ -11,7 +11,7 @@ class ForbidsAuthContainer extends React.Component {
   }
 
   render() {
-    if (this.props.signedIn) {
+    if (!this.props.signedIn) {
       return  this.props.children && React.cloneElement(
         this.props.children,
         {
