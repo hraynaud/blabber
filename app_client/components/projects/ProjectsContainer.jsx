@@ -11,7 +11,7 @@ export default React.createClass({
   },
 
   readProjectsFromAPI: function() {
-    this.props.readFromAPI(this.props.origin + '/projects', function(projects) {
+    this.props.readFromAPI('/projects', function(projects) {
       this.setState({data: projects});
     }.bind(this));
   },
