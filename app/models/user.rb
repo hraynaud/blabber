@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :blabs
+  has_many :projects
   has_secure_password
 
   validates :uid, :handle, presence: true, on: :create, unless: :using_pwd?

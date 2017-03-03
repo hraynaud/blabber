@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'login', to: 'authentication#login'
 
   resources :blabs, only: [:index, :create, :show]
+  resources :projects, only: [:index, :create, :show]
 
   match '*all', to: 'application#index', via: [:get]
 end
