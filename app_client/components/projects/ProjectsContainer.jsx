@@ -1,34 +1,27 @@
 import React from 'react';
+import ProjectFormContainer from './ProjectFormContainer.jsx'
 
 export default React.createClass({
   getInitialState: function() {
     return {data: []};
   },
+
   componentDidMount: function() {
-      this.readBlabsFromAPI();
+    //this.readProjectsFromAPI();
   },
 
-  readBlabsFromAPI: function() {
-    this.props.readFromAPI(this.props.origin + '/blabs', function(blabs) {
-      this.setState({data: blabs});
+  readProjectsFromAPI: function() {
+    this.props.readFromAPI(this.props.origin + '/projects', function(projects) {
+      this.setState({data: projects});
     }.bind(this));
   },
-  optimisticUpdate: function(blab) {
-    var blabs = this.state.data;
-    blabs.unshift(blab);
-    this.setState({data: blabs});
-  },
-  writeBlabToAPI: function(data) {
-    this.props.writeToAPI('post', this.props.origin + '/blabs', data, function(blab) {
-      var blabs = this.state.data;
-      blabs.shift();
-      blabs.unshift(blab);
-      this.setState({data: blabs});
-    }.bind(this));
-  },
+
   render: function() {
     return (
-      <h1>Projects live here</h1>
+      <div>
+        <h1>Projects live here</h1>
+        <ProjectFormContainer  writeToAPI={this.props.writeToAPI} />
+      </div>
     );
   }
 });

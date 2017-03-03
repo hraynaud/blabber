@@ -42,7 +42,8 @@ var App =  React.createClass({
     });
   },
 
-  writeToAPI: function(method, url, data, successFunction) {
+  writeToAPI: function(method, path, data, successFunction) {
+    var url = this.props.origin + path;
     Reqwest({
       url: url,
       data: data,
