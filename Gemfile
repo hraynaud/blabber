@@ -14,7 +14,7 @@ gem 'redis'
 gem 'redis-namespace'
 gem 'activemodel-serializers-xml'
 gem 'active_model_serializers'
-gem 'related'
+gem 'related', :git => "git@github.com:/hraynaud/related.git"
 group :production do
   gem 'rails_12factor'
 end
