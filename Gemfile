@@ -2,18 +2,19 @@ source 'https://rubygems.org'
 
 ruby '2.2.2'
 
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+gem 'rails', '~> 5.1.4'
 gem 'puma'
 gem 'pg'
+gem 'pg_search'
+gem 'rack-cors'
 gem 'jwt'
 gem 'oauth'
 gem 'bcrypt'
-
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
- gem 'rack-cors'
-
-
-
+gem 'redis'
+gem 'redis-namespace'
+gem 'activemodel-serializers-xml'
+gem 'active_model_serializers'
+gem 'related'
 group :production do
   gem 'rails_12factor'
 end
