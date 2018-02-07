@@ -4,7 +4,7 @@ ruby '2.2.2'
 
 gem 'rails', '~> 5.1.4'
 gem 'puma'
-gem 'pg'
+gem 'pg', ' 0.21.0'
 gem 'pg_search'
 gem 'rack-cors'
 gem 'jwt'
@@ -15,6 +15,7 @@ gem 'redis-namespace'
 gem 'activemodel-serializers-xml'
 gem 'active_model_serializers'
 gem 'related', :git => "git@github.com:/hraynaud/related.git"
+
 group :production do
   gem 'rails_12factor'
 end
